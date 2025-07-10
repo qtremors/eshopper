@@ -1,70 +1,69 @@
-EShopper - Django E-commerce Platform
+# EShopper - Django E-commerce Platform
+
 EShopper is a feature-rich e-commerce platform built with Django. It provides a complete online shopping experience, from browsing products to a secure checkout process. This project is designed to be a robust and scalable solution for online retail.
 
-Features
-Product Catalog: Browse products by category and sub-category.
+## Features
 
-Search and Filter: Easily find products with search and price filtering options.
+* **Product Catalog**: Browse products by category and sub-category.
+* **Search and Filter**: Easily find products with search and price filtering options.
+* **Shopping Cart**: Add products to a cart, update quantities, and apply coupon codes.
+* **Wishlist**: Save products for later purchase.
+* **User Authentication**: Secure user registration, login, and profile management.
+* **Order Management**: Place orders and view order history.
+* **Product Reviews**: Leave reviews and ratings for products.
+* **Responsive Design**: A mobile-friendly interface for a seamless experience on any device.
 
-Shopping Cart: Add products to a cart, update quantities, and apply coupon codes.
+## Tech Stack
 
-Wishlist: Save products for later purchase.
+* **Backend**: Django
+* **Frontend**: HTML, CSS, Bootstrap
+* **Database**: SQLite (or any other Django-supported database)
 
-User Authentication: Secure user registration, login, and profile management.
+## Getting Started
 
-Order Management: Place orders and view order history.
+### Prerequisites
 
-Product Reviews: Leave reviews and ratings for products.
+* Python 3.x
+* Django
+* Pillow (for image handling)
 
-Responsive Design: A mobile-friendly interface for a seamless experience on any device.
+### Installation
 
-Tech Stack
-Backend: Django
+1.  **Clone the repository**:
+    ```bash
+    git clone [https://github.com/your-username/eshopper.git](https://github.com/your-username/eshopper.git)
+    ```
 
-Frontend: HTML, CSS, Bootstrap
+2.  **Create a virtual environment**:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
 
-Database: SQLite (or any other Django-supported database)
+3.  **Install the dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Getting Started
-Prerequisites
-Python 3.x
+4.  **Apply migrations**:
+    ```bash
+    python manage.py migrate
+    ```
 
-Django
+5.  **Run the development server**:
+    ```bash
+    python manage.py runserver
+    ```
 
-Pillow (for image handling)
+The application will be available at `http://127.0.0.1:8000/`.
 
-Installation
-Clone the repository:
+## Project Structure
 
-git clone [https://github.com/your-username/eshopper.git](https://github.com/your-username/eshopper.git)
+* `models.py`: Defines the database schema for products, categories, users, orders, etc.
+* `views.py`: Contains the business logic for handling requests and rendering templates.
+* `urls.py`: Maps URLs to their corresponding views.
+* `templates/`: Contains the HTML templates for the user interface.
 
-Create a virtual environment:
+## Contributing
 
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-
-Install the dependencies:
-
-pip install -r requirements.txt
-
-Apply migrations:
-
-python manage.py migrate
-
-Run the development server:
-
-python manage.py runserver
-
-The application will be available at http://127.0.0.1:8000/.
-
-Project Structure
-models.py: Defines the database schema for products, categories, users, orders, etc.
-
-views.py: Contains the business logic for handling requests and rendering templates.
-
-urls.py: Maps URLs to their corresponding views.
-
-templates/: Contains the HTML templates for the user interface.
-
-Contributing
 Contributions are welcome! If you have any suggestions or find any bugs, please open an issue or submit a pull request.
