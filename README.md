@@ -1,6 +1,6 @@
 # EShopper - Django E-commerce Platform
 
-EShopper is a feature-rich e-commerce platform built with Django. It provides a complete online shopping experience, from browsing products to a secure checkout process. This project is designed to be a robust and scalable solution for online retail.
+EShopper is a feature-rich e-commerce platform built with Django. It provides a complete online shopping experience, from Browse products to a secure checkout process. This project is designed to be a robust and scalable solution for online retail.
 
 ## Features
 
@@ -67,3 +67,7 @@ The application will be available at `http://127.0.0.1:8000/`.
 ## Contributing
 
 Contributions are welcome! If you have any suggestions or find any bugs, please open an issue or submit a pull request.
+
+---
+
+**Note**: This website was created using the [EShopper - Free Responsive Bootstrap 4 E-commerce Website Template](https://themewagon.com/themes/eshopper-free-responsive-bootstrap-4-e-commerce-website-template/) by ThemeWagon.
