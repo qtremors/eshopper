@@ -6,7 +6,7 @@ A full-featured e-commerce website built with **Python** and the **Django** fram
 
 ### 🖼️ Image Gallery
 
-| ![](assets/home0.png) | ![](assets/home.png) |
+| ![home](assets/home0.png) | ![](assets/home.png) |
 | ![](assets/shop.png) | ![](assets/wishlist.png) |
 | ![](assets/cart.png) | ![](assets/checkout.png) |
 | ![](assets/razorpay1.png) | ![](assets/razorpay2.png) |
