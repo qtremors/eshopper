@@ -4,16 +4,17 @@ A full-featured e-commerce website built with **Python** and the **Django** fram
 
 ---
 
+
 ### 🖼️ Image Gallery
 
 | | |
 |:---:|:---:|
-| ![Home Page](assets/home0.png "Home Page") | ![Home Page logged-in](assets/home.png) |
-| ![Shop Page](assets/shop.png) | ![Wishlist Page](assets/wishlist.png) |
-| ![Cart Page](assets/cart.png) | ![Checkout Page](assets/checkout.png) |
-| ![Payment Step 1](assets/razorpay1.png) | ![Payment Step 2](assets/razorpay2.png) |
-| ![Payment Step 3](assets/razorpay3.png) | ![Payment Step 4](assets/razorpay4.png) |
-| ![User Profile Page](assets/profile.png) | ![Order History Page](assets/order.png) |
+| ![Home Page 1](assets/home0.png "Home Page") | ![Home Page 2](assets/home.png "Home Page (user logged-in)") |
+| ![Shop Page](assets/shop.png "Shop Page") | ![Wishlist Page](assets/wishlist.png "Wishlist Page") |
+| ![Cart Page](assets/cart.png "Cart Page") | ![Checkout Page](assets/checkout.png "Checkout Page") |
+| ![Payment Step 1](assets/razorpay1.png "Payment Step 1") | ![Payment Step 2](assets/razorpay2.png "Payment Step 2") |
+| ![Payment Step 3](assets/razorpay3.png "Payment Step 3") | ![Payment Step 4](assets/razorpay4.png "Payment Step 4") |
+| ![User Profile Page](assets/profile.png "User Profile Page") | ![Order History Page](assets/order.png "Order History Page") |
 
 
 ---
