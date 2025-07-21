@@ -6,13 +6,15 @@ A full-featured e-commerce website built with **Python** and the **Django** fram
 
 ### 🖼️ Image Gallery
 
+| | |
+|:---:|:---:|
+| ![Home Page](assets/home0.png) | ![Home Page logged-in](assets/home.png) |
+| ![Shop Page](assets/shop.png) | ![Wishlist Page](assets/wishlist.png) |
+| ![Cart Page](assets/cart.png) | ![Checkout Page](assets/checkout.png) |
+| ![Payment Step 1](assets/razorpay1.png) | ![Payment Step 2](assets/razorpay2.png) |
+| ![Payment Step 3](assets/razorpay3.png) | ![Payment Step 4](assets/razorpay4.png) |
+| ![User Profile Page](assets/profile.png) | ![Order History Page](assets/order.png) |
 
-| ![home](assets/home0.png) | ![](assets/home.png) |
-| ![](assets/shop.png) | ![](assets/wishlist.png) |
-| ![](assets/cart.png) | ![](assets/checkout.png) |
-| ![](assets/razorpay1.png) | ![](assets/razorpay2.png) |
-| ![](assets/razorpay3.png) | ![](assets/razorpay4.png) |
-| ![](assets/profile.png) | ![](assets/order.png) |
 
 ---
 
