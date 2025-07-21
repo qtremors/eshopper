@@ -6,6 +6,7 @@ A full-featured e-commerce website built with **Python** and the **Django** fram
 
 ### 🖼️ Image Gallery
 
+
 | ![home](assets/home0.png) | ![](assets/home.png) |
 | ![](assets/shop.png) | ![](assets/wishlist.png) |
 | ![](assets/cart.png) | ![](assets/checkout.png) |
