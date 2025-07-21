@@ -1,73 +1,141 @@
-# EShopper - Django E-commerce Platform
+# 🏦 E-Shopper Django E-commerce Project
 
-EShopper is a feature-rich e-commerce platform built with Django. It provides a complete online shopping experience, from Browse products to a secure checkout process. This project is designed to be a robust and scalable solution for online retail.
-
-## Features
-
-* **Product Catalog**: Browse products by category and sub-category.
-* **Search and Filter**: Easily find products with search and price filtering options.
-* **Shopping Cart**: Add products to a cart, update quantities, and apply coupon codes.
-* **Wishlist**: Save products for later purchase.
-* **User Authentication**: Secure user registration, login, and profile management.
-* **Order Management**: Place orders and view order history.
-* **Product Reviews**: Leave reviews and ratings for products.
-* **Responsive Design**: A mobile-friendly interface for a seamless experience on any device.
-
-## Tech Stack
-
-* **Backend**: Django
-* **Frontend**: HTML, CSS, Bootstrap
-* **Database**: SQLite (or any other Django-supported database)
-
-## Getting Started
-
-### Prerequisites
-
-* Python 3.x
-* Django
-* Pillow (for image handling)
-
-### Installation
-
-1.  **Clone the repository**:
-    ```bash
-    git clone [https://github.com/your-username/eshopper.git](https://github.com/your-username/eshopper.git)
-    ```
-
-2.  **Create a virtual environment**:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-    ```
-
-3.  **Install the dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Apply migrations**:
-    ```bash
-    python manage.py migrate
-    ```
-
-5.  **Run the development server**:
-    ```bash
-    python manage.py runserver
-    ```
-
-The application will be available at `http://127.0.0.1:8000/`.
-
-## Project Structure
-
-* `models.py`: Defines the database schema for products, categories, users, orders, etc.
-* `views.py`: Contains the business logic for handling requests and rendering templates.
-* `urls.py`: Maps URLs to their corresponding views.
-* `templates/`: Contains the HTML templates for the user interface.
-
-## Contributing
-
-Contributions are welcome! If you have any suggestions or find any bugs, please open an issue or submit a pull request.
+A full-featured e-commerce website built with **Python** and the **Django** framework. This project uses the "**EShopper**" HTML template as its frontend and provides a complete user experience, including storefront, cart, orders, and account management.
 
 ---
 
-**Note**: This website was created using the [EShopper - Free Responsive Bootstrap 4 E-commerce Website Template](https://themewagon.com/themes/eshopper-free-responsive-bootstrap-4-e-commerce-website-template/) by ThemeWagon.
+### 🖼️ Image Gallery
+
+| ![](assets/home0.png) | ![](assets/home.png) |
+| ![](assets/shop.png) | ![](assets/wishlist.png) |
+| ![](assets/cart.png) | ![](assets/checkout.png) |
+| ![](assets/razorpay1.png) | ![](assets/razorpay2.png) |
+| ![](assets/razorpay3.png) | ![](assets/razorpay4.png) |
+| ![](assets/profile.png) | ![](assets/order.png) |
+
+---
+
+## ✨ Features
+
+* **User Authentication**: Registration, login, logout
+* **User Profile**: Update profile info including username, email, and profile picture
+* **Password Reset**: Full flow with email OTP confirmation
+* **Product Catalog**: Categorized product listings with sub-categories
+* **Advanced Search/Filter**: Search by name and filter by price
+* **Shopping Cart**: Add, update, and remove items
+* **Wishlist**: Save products for later
+* **Coupons**: Apply discount codes in the cart
+* **Secure Checkout**: Multi-step checkout with Razorpay integration
+* **Order History**: View previous orders and statuses
+* **Product Reviews**: Leave ratings and comments
+* **Contact Form**: Users can submit inquiries directly
+
+---
+
+## 🛠️ Tech Stack
+
+| Component    | Technology                               |
+| ------------ | ---------------------------------------- |
+| **Backend**  | Python, Django                           |
+| **Frontend** | HTML, CSS, Bootstrap, JavaScript, jQuery |
+| **Database** | Django ORM (default: SQLite)             |
+| **Payments** | Razorpay                                 |
+| **Email**    | Django SMTP backend                      |
+
+---
+
+## 🚀 Setup & Installation
+
+### 1. Prerequisites
+
+* Python 3.8+
+* pip
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/qtremors/eshopper
+cd shopping
+```
+
+### 3. Create and Activate Virtual Environment
+
+**Windows:**
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**macOS/Linux:**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 4. Install Dependencies
+
+Ensure `requirements.txt` exists (generate with `pip freeze > requirements.txt` if needed):
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Configure Settings
+
+Edit `shopping/settings.py`:
+
+* Set `SECRET_KEY`
+* Configure database (optional if using SQLite)
+* Setup SMTP Email:
+
+```python
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'your-email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-app-password'
+```
+
+* Add Razorpay keys:
+
+```python
+RAZORPAY_KEY_ID = 'YOUR_KEY_ID'
+RAZORPAY_KEY_SECRET = 'YOUR_KEY_SECRET'
+```
+
+### 6. Run Migrations
+
+```bash
+python manage.py migrate
+```
+
+### 7. Create Superuser (for Admin Panel)
+
+```bash
+python manage.py createsuperuser
+```
+
+### 8. Start the Development Server
+
+```bash
+python manage.py runserver
+```
+
+Visit: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+---
+
+## ⚠️ Important Notes & Known Issues
+
+* ❌ **Critical Security Flaw**: Passwords are stored in **plaintext**. Replace with Django's `make_password()` and `check_password()` for hashing.
+* ⛔ **Hardcoded API Keys**: Razorpay keys are currently in `views.py`. Move to `settings.py` to protect sensitive info.
+
+---
+
+
+## 🙏 Acknowledgments
+
+* Frontend UI based on **EShopper template** by [HTML Codex](https://htmlcodex.com)
