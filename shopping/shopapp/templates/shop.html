@@ -1,0 +1,230 @@
+<head>
+    <title>EShopper - Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+
+<style>
+    /* Additions for wishlist button on image */
+    .product-item .card-header {
+        position: relative; /* Make this the positioning context for absolute children */
+    }
+
+    .wishlist-btn-overlay {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2; /* Ensure it's above the image */
+        background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+        border-radius: 50%; /* Make it round */
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .wishlist-btn-overlay i {
+        color: lightgray;
+        font-size: 1.2rem;
+    }
+
+    .wishlist-btn-overlay:hover {
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    .wishlist-btn-overlay i.wished {
+        color: #dc3545;
+    }
+
+    /* Mobile specific adjustments for filtering section */
+    @media (max-width: 991.98px) {
+        .filter-section {
+            display: none; /* Hide the filter section by default on mobile */
+            padding-top: 1rem;
+        }
+
+        .filter-toggle-btn {
+            display: block; /* Show the toggle button on mobile */
+            margin-bottom: 1rem;
+        }
+
+        /* Adjust the product grid for smaller screens */
+        .product-grid .col-lg-4 {
+            flex: 0 0 50%; /* Show 2 columns on tablets/mobile landscape */
+            max-width: 50%;
+        }
+        
+        .product-grid .col-lg-4.col-sm-12 {
+            flex: 0 0 100%; /* Ensure full width on very small screens if needed */
+            max-width: 100%;
+        }
+    }
+
+    /* Adjusting for smaller screens if needed, ensuring products are displayed correctly */
+    @media (max-width: 575.98px) {
+        .product-grid .col-lg-4 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+</style>
+
+
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Shop</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 col-md-12">
+                <button class="btn btn-primary btn-block filter-toggle-btn d-lg-none" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+                    Show Filters
+                </button>
+
+                <div class="collapse d-lg-block filter-section" id="filterCollapse">
+                    <div class="border-bottom mb-4 pb-4">
+                        <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
+                        <form>
+                            {% for p in price %}
+                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                <a href="{% url 'shop' %}?price_range={{ p.name }}">{{p.name}}</a>
+                            </div>
+                            {% endfor %}
+                        </form>
+                    </div>
+                    <div class="border-bottom mb-4 pb-4">
+                        </div>
+                    <div class="mb-5">
+                        </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-12">
+                <div class="row pb-3 product-grid">
+                    <div class="col-12 pb-1">
+                        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
+                            <form method="GET" action="{% url 'shop' %}" class="w-100 mb-3 mb-md-0 mr-md-3">
+                                {% if request.GET.price_range %}
+                                    <input type="hidden" name="price_range" value="{{ request.GET.price_range }}">
+                                {% endif %}
+                                {% if request.GET.subcategory %}
+                                    <input type="hidden" name="subcategory" value="{{ request.GET.subcategory }}">
+                                {% endif %}
+                                {% if request.GET.category %}
+                                    <input type="hidden" name="category" value="{{ request.GET.category }}">
+                                {% endif %}
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search by name" name="q" value="{{ request.GET.q|default:'' }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit"> 
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <div class="dropdown ml-auto">
+                                <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                            Sort by
+                                        </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                                    <a class="dropdown-item" href="#">Latest</a>
+                                    <a class="dropdown-item" href="#">Popularity</a>
+                                    <a class="dropdown-item" href="#">Best Rating</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% for i in pid %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1"> 
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="{{ i.image.url }}" alt="">
+                                <a href="{% url 'add_to_wishlist' i.id %}" class="wishlist-btn-overlay">
+                                    <i class="fas fa-heart {% if i.is_wished %}wished{% endif %}"></i>
+                                </a>
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">{{i.name}}</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>Rs.</h6><h6>{{i.price}}</h6><h6 class="text-muted ml-2"><del>{{i.del_price}}</del></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="{% url 'detail' i.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="{% url 'add_to_cart' i.id %}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %} 
+                    <div class="col-12">
+                        <p class="text-center">No products found matching your criteria.</p>
+                    </div>
+                    {% endfor %}
+
+                    <div class="col-12 pb-1">
+                        <nav aria-label="Page navigation">
+                          <ul class="pagination justify-content-center mb-3">
+                            {% if pid.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ pid.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.price_range %}&price_range={{ request.GET.price_range }}{% endif %}{% if request.GET.subcategory %}&subcategory={{ request.GET.subcategory }}{% endif %}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            
+                            {% for page_num in show_page %}
+                                {% if page_num == pid.number %}
+                                    <li class="page-item active"><a class="page-link" href="?page={{ page_num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.price_range %}&price_range={{ request.GET.price_range }}{% endif %}{% if request.GET.subcategory %}&subcategory={{ request.GET.subcategory }}{% endif %}">{{ page_num }}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.price_range %}&price_range={{ request.GET.price_range }}{% endif %}{% if request.GET.subcategory %}&subcategory={{ request.GET.subcategory }}{% endif %}">{{ page_num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if pid.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ pid.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.price_range %}&price_range={{ request.GET.price_range }}{% endif %}{% if request.GET.subcategory %}&subcategory={{ request.GET.subcategory }}{% endif %}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                          </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
