@@ -1,4 +1,17 @@
-# 🏦 E-Shopper Django E-commerce Project
+# ⚠️ DEPERECATED / ARCHIVED ⚠️
+
+> **⛔ SECURITY WARNING:** This project is a **Legacy Learning Project**. It contains **CRITICAL SECURITY VULNERABILITIES** (e.g., plaintext passwords, hardcoded keys) and poor architectural patterns. It should **NOT** be used in production or as a reference for modern Django development.
+
+---
+
+### 🚀 Check out the Successor: Amanzon
+I have built a completely new, production-ready e-commerce application from scratch applying modern best practices. 
+👉 **New Repo:** [Amanzon GitHub Repo](https://github.com/qtremors/amanzon)
+👉 **Live Demo:** [Amanzon Website](https://amanzon.onrender.com)
+
+---
+
+# 🏦 E-Shopper Django E-commerce Project (Legacy)
 
 A full-featured e-commerce website built with **Python** and the **Django** framework. This project uses the "**EShopper**" HTML template as its frontend and provides a complete user experience, including storefront, cart, orders, and account management.
 
